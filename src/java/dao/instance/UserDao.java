@@ -43,7 +43,7 @@ public class UserDao {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, user.getSurname());
+            preparedStmt.setString(1, user.getFirstname());
             preparedStmt.setString(2, user.getLastname());
             preparedStmt.setInt(3, user.getAge());
             preparedStmt.setString(4, user.getLogin());
@@ -74,7 +74,7 @@ public class UserDao {
                 user.setLastname(rs.getString("lastname"));
                 user.setLogin(rs.getString("login"));
                 user.setPwd(rs.getString("pwd"));
-                user.setSurname(rs.getString("firstname"));
+                user.setFirstname(rs.getString("firstname"));
 
 
             rs.close();
@@ -105,7 +105,7 @@ public class UserDao {
                 user.setLastname(rs.getString("lastname"));
                 user.setLogin(rs.getString("login"));
                 user.setPwd(rs.getString("pwd"));
-                user.setSurname(rs.getString("firstname"));
+                user.setFirstname(rs.getString("firstname"));
 
                 userList.add(user);
             }
