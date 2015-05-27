@@ -43,4 +43,9 @@ public class RecipeControlerBean {
         //place la liste de recette dans l'espace de mémoire de JSF
         sessionMap.put("recipeList", recipeList);
     }
+    
+    public void loadRecipeSearch(ArrayList<String> keyword) {
+         ArrayList<RecipeModel> list = this.recipeDao.Search(keyword);
+        
+    }
 }

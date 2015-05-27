@@ -69,7 +69,7 @@ public class UserControlerBean {
                 }
             }
             if (i == 1) {
-                // Message : login déjà pris
+                // Message : login déjà pris // Pop-up compte non créé
                 // TODO
                 //redirect the count creation page
                 return "userCountCreation.xhtml"; // TODO
@@ -77,17 +77,22 @@ public class UserControlerBean {
                 //UserSubmissionModelBean
                 //ajout de l'utilisateur à la base de données
                 this.userDao.addUser(userSubmitted);
-                //pop-up compte créé
+                //récupère l'espace de mémoire de JSF
+                ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+                Map<String, Object> sessionMap = externalContext.getSessionMap();
+                //place l'utilisateur dans l'espace de mémoire de JSF
+                sessionMap.put("loggedUser", userSubmitted);
+                //pop-up compte créé TODO
                 return "userCountCreated.xhtml"; // TODO
             }
 
             /*while ((!userSubmitted.getLogin().equals(userDao.getUsersLogin().get(i))) || (i == userDao.getUsersLogin().size)) {
-             i++;
+                i++;
              }
              if (userSubmitted.getLogin() != userDao.getUsersLogin().get(i)) {            
              }*/
         } else {
-            // Message : 2 mdp donnés différents
+            // Message : 2 mdp donnés différents // Pop-up compte non créé
             // TODO
             //redirect the count creation page
             return "userCountCreation.xhtml";
