@@ -23,6 +23,7 @@ public class UserModelBean implements Serializable {
     private int age;
     private String login;
     private String pwd;
+    private String email;
 
     public UserModelBean() {
     }
@@ -66,6 +67,16 @@ public class UserModelBean implements Serializable {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     
     
 }
