@@ -58,6 +58,47 @@ public class RecipesDao {
             e.printStackTrace();
         }
     }
+    
+    public void deleteRecipe(RecipeModel recipe) {
+        // Création de la requête 
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            String query = " delete from recette where title = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, recipe.getTitle());
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateRecipe(RecipeModel recipe) {
+        // Création de la requête 
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            String query = " update recette set title=?, duration=?, expertise=?, nbpeople=?, type=?, description=?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, recipe.getTitle());
+            preparedStmt.setInt(2, recipe.getDuration());
+            preparedStmt.setInt(3, recipe.getExpertise());
+            preparedStmt.setInt(4, recipe.getNbpeople());
+            preparedStmt.setString(5, recipe.getType());
+            preparedStmt.setString(6, recipe.getDescription());
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<RecipeModel> getAllRecipes() {
         //return value
