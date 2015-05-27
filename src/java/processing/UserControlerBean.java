@@ -130,4 +130,12 @@ public class UserControlerBean {
             return null;
         }
     }
+    
+    public void adminDeleteUser(UserModelBean user) {
+        userDao.deleteUser(user);
+    }
+    
+    public void adminUpdateUser(UserModelBean user){
+        userDao.updateUser(user);
+    }
 }
