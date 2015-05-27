@@ -57,6 +57,25 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+    
+    public void deleteUser(UserModelBean user) {
+// Création de la requête 
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            String query = " delete from users where login = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, user.getLogin());
+           
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public UserModelBean GetUser(String login) {
         //return value
