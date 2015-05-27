@@ -16,6 +16,7 @@ import dao.instance.RecipesDao;
 import dao.fabric.DaoFabric;
 import model.RecipeListModelBean;
 import model.RecipeModel;
+import model.UserModelBean;
 
 
 /**
@@ -60,4 +61,22 @@ public class RecipeControlerBean {
          ArrayList<RecipeModel> list = this.recipeDao.Search(keyword);
          return list;
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Pour DS
+// compréhension j2e, qu'est ce que c'est
+// pratique, bon sens, interpréter code
+// pas de document
