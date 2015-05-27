@@ -57,6 +57,30 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+    //Update users SET lastconnection = ? WHERE login = ?"
+    public void updateUser(UserModelBean user) {
+// Création de la requête 
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            String query = " update  users set firstname=?, lastname=?, age=?, login=?, pwd=?, email=? where login = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, user.getFirstname());
+            preparedStmt.setString(2, user.getLastname());
+            preparedStmt.setInt(3, user.getAge());
+            preparedStmt.setString(4, user.getLogin());
+            preparedStmt.setString(5, user.getPwd());
+            preparedStmt.setString(6, user.getEmail());
+            preparedStmt.setString(7, user.getLogin());
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void deleteUser(UserModelBean user) {
 // Création de la requête 
