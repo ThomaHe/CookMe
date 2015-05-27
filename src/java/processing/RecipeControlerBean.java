@@ -31,6 +31,18 @@ public class RecipeControlerBean {
         this.recipeDao=DaoFabric.getInstance().createRecipesDao();
     }
     
+    public void adminAddRecipe(RecipeModel recipe){
+        recipeDao.addRecipe(recipe);
+    }
+    
+    public void adminDeleteRecipe(RecipeModel recipe){
+        recipeDao.delete(recipe);
+    }
+    
+    public void adminUpdateRecipe(RecipeModel recipe){
+        recipeDao.update(recipe);
+    }
+    
     public void loadAllRecipe(){
         ArrayList<RecipeModel> list = this.recipeDao.getAllRecipes();
         RecipeListModelBean recipeList = new RecipeListModelBean();
