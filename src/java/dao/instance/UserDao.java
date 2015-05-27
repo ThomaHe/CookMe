@@ -35,6 +35,7 @@ public class UserDao {
         dB_PWD = DB_PWD;
     }
 
+    
     public void addUser(UserModelBean user) {
 // Création de la requête 
         try {
@@ -57,9 +58,11 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+    
+    
     //Update users SET lastconnection = ? WHERE login = ?"
     public void updateUser(UserModelBean user) {
-// Création de la requête 
+    // Création de la requête 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             String query = " update  users set firstname=?, lastname=?, age=?, login=?, pwd=?, email=? where login = ?";
@@ -82,6 +85,7 @@ public class UserDao {
         }
     }
     
+    
     public void deleteUser(UserModelBean user) {
 // Création de la requête 
         try {
@@ -101,6 +105,7 @@ public class UserDao {
         }
     }
 
+    
     public UserModelBean GetUser(String login) {
         //return value
         UserModelBean user = new UserModelBean();
@@ -130,6 +135,7 @@ public class UserDao {
         return user;
     }
 
+    
     public ArrayList<UserModelBean> getAllUser() { //
         //return value
         ArrayList<UserModelBean> userList = new ArrayList<UserModelBean>();
@@ -165,6 +171,7 @@ public class UserDao {
         return userList;
     }
 
+    
     public ArrayList<String> getUsersLogin() { //
         //return value
         ArrayList<String> loginList = new ArrayList<String>();
@@ -190,6 +197,7 @@ public class UserDao {
         return loginList;
     }
 
+    
     public void setLastConnection(UserModelBean user, String date) {
         
 
