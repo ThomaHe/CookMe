@@ -42,7 +42,7 @@ public class UserControlerBean {
         UserModelBean user = userDao.GetUser(loginBean.getLogin());
 
         if (user != null) {
-            if (user.getPwd().equals(loginBean.getPwd())) {
+                // Les 2 mots de passe sont vérifiés dans la vue
                 //récupère l'espace de mémoire de JSF
                 ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
                 Map<String, Object> sessionMap = externalContext.getSessionMap();
@@ -50,11 +50,6 @@ public class UserControlerBean {
                 sessionMap.put("loggedUser", user);
                 //redirect the current page
                 return "userdisplay.xhtml"; // TODO à modifier par bon nom
-            } else {
-                // Message : Mot de passe mauvais
-                // TODO
-                return "userLogin.xhtml";   // TODO à modifier par bon nom
-            }
         } else {
             // Message : login inexistant
             // TODO
