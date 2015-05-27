@@ -13,6 +13,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import dao.instance.RecipesDao;
+import dao.fabric.DaoFabric;
 import model.RecipeListModelBean;
 import model.RecipeModel;
 
@@ -37,8 +38,7 @@ public void loadAllRecipe(){
         recipeList.addRecipeList(recipe);
     }
     //récupère l'espace de mémoire de JSF
-    ExternalContext externalContext =
-    FacesContext.getCurrentInstance().getExternalContext();
+    ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
     Map<String, Object> sessionMap = externalContext.getSessionMap();
     //place la liste de recette dans l'espace de mémoire de JSF
     sessionMap.put("recipeList", recipeList);
