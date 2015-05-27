@@ -7,8 +7,6 @@ package dao.fabric;
 
 import dao.instance.RecipesDao;
 import dao.instance.UserDao;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 /**
  *
