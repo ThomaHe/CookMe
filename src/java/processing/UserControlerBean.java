@@ -14,6 +14,12 @@ import javax.faces.context.FacesContext;
 import model.UserSubmissionModelBean;
 import dao.instance.UserDao;
 import dao.fabric.DaoFabric;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 import model.LoginBean;
 import model.UserModelBean;
 
@@ -107,7 +113,13 @@ public class UserControlerBean {
 
         if (user != null) {
             // Enregistre l'heure de la dernière connexion
-            timeLastConnexion(user);
+            // the string representation of date (month/day/year)
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy-HH:mm:ss");
+            // Get the date today using Calendar object.
+            Date today = Calendar.getInstance().getTime();        
+            // Using DateFormat format method we can create a string 
+            String reportDate = df.format(today);      
+            userDao.setLastConnection(user, reportDate);
             //place l'utilisateur dans l'espace de mémoire de JSF
             sessionMap.remove("loggedUser", null);
             //redirect the current page // Pop-up
@@ -117,9 +129,5 @@ public class UserControlerBean {
             // Déconnexion impossible car pas connecté
             return null;
         }
-    }
-
-    public void timeLastConnexion(UserModelBean user) {
-
     }
 }
