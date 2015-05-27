@@ -12,8 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.RecipeModel;
-import model.UserModelBean;
-import model.UserSubmissionModelBean;
 
 /**
  *
@@ -72,6 +70,45 @@ public class RecipesDao {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT * FROM recette");
+
+            while (rs.next()) {
+                
+                RecipeModel recep = new RecipeModel();
+                recep.setDescription(rs.getString("description"));
+                recep.setDuration(rs.getInt("duration"));
+                recep.setExpertise(rs.getInt(rs.getInt("expertise")));
+                recep.setNbpeople(rs.getInt("nbpeople"));
+                recep.setTitle(rs.getString("title"));
+                recep.setType(rs.getString("type"));                
+                RecipeModelList.add(recep);
+            }
+
+            rs.close();
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return RecipeModelList;
+    }
+    
+    public ArrayList<RecipeModel> Search(ArrayList<String> keyword) {
+        //return value
+        ArrayList<RecipeModel> RecipeModelList = new ArrayList<RecipeModel>();
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // create connection 
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            stmt = connection.createStatement();
+            
+            StringBuilder query = new StringBuilder("SELECT * FROM recette where 1=1 ");
+            for(String key : keyword){
+                query.append(" and description LIKE %" + key +"%");
+            }
+            
+            rs = stmt.executeQuery(query.toString());
 
             while (rs.next()) {
                 
