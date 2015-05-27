@@ -56,23 +56,34 @@ public class UserDao {
             e.printStackTrace();
         }
     }
-    
-    public void GetUser(String login) {
-// Création de la requête 
+
+    public UserModelBean GetUser(String login) {
+        //return value
+        UserModelBean user = new UserModelBean();
+        Statement stmt = null;
+        ResultSet rs = null;
+
         try {
+            // create connection 
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            String query = "select * from users where login = ?";
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM users where login = '" + login + "'");
 
-            // create the mysql insert preparedstatement
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, login);
 
-            // execute the preparedstatement
-            preparedStmt.execute();
+                user.setAge(rs.getInt("age"));
+                user.setLastname(rs.getString("lastname"));
+                user.setLogin(rs.getString("login"));
+                user.setPwd(rs.getString("pwd"));
+                user.setSurname(rs.getString("firstname"));
+
+
+            rs.close();
+            stmt.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return user;
     }
 
     public ArrayList<UserModelBean> getAllUser() { //
@@ -88,14 +99,14 @@ public class UserDao {
             rs = stmt.executeQuery("SELECT * FROM users");
 
             while (rs.next()) {
-                
+
                 UserModelBean user = new UserSubmissionModelBean();
                 user.setAge(rs.getInt("age"));
                 user.setLastname(rs.getString("lastname"));
                 user.setLogin(rs.getString("login"));
                 user.setPwd(rs.getString("pwd"));
                 user.setSurname(rs.getString("firstname"));
-                
+
                 userList.add(user);
             }
 
@@ -107,7 +118,7 @@ public class UserDao {
         }
         return userList;
     }
-    
+
     public ArrayList<String> getUsersLogin() { //
         //return value
         ArrayList<String> loginList = new ArrayList<String>();
