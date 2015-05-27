@@ -1,27 +1,63 @@
 @CHARSET "UTF-8";
 
-html, body{
-	height: 100%;
+body, html{
+    background-color: #F0F0F0 ;
 }
-.activite{
-	display : inline-block;
-	width: 20%;
-	min-height: 60%;
-	margin: 5%;
-	background-image: url(http://cdn.playbuzz.com/cdn/d491639a-d33f-4402-8b30-cc3ef82b06a5/97253a58-90b7-42aa-bbc3-28f5822315bb.jpg);
-	background-size : 121%;
-	color:blue;
-	text-align: center;
+.global{
+    margin-top: 20px;
 }
-#emergency{
-	margin-left: 10%;
+header{
+    min-height: 20%;
+    border-bottom: 2px solid black;
+    padding: 10px;
 }
-#logofoo{
-	text-align : right;
+content{
+    
 }
-#logo{
-	min-width : 70%;
+#cont{
+    
 }
-.content{
-	text-align : center;
+footer{
+    min-height: 10%;
+    border-top: 2px solid black;
+    position: absolute;
+    bottom: 0;
+
+}
+
+
+
+#activite{
+    background-color: blue;
+    color :white;
+    text-align : center;
+    height : 100px;
+    vertical-align: middle;
+    padding-top: 35px;
+    font-size: 1.5em;
+}
+
+#inscription{
+    height : 100px;
+}
+#inscription a{
+    text-decoration:none;
+    color : black;
+}
+
+#connexion{
+
+}
+
+.output-label{
+    display: block;
+    width: 100px;
+    float: left;
+}
+.input-text{
+    margin-bottom: 2px;
+}
+
+#logofoo img{
+    max-height: 50px;
 }
