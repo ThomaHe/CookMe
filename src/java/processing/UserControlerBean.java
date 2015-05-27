@@ -44,8 +44,7 @@ public class UserControlerBean {
                 sessionMap.put("loggedUser", user);
                 //redirect the current page
                 return "userdisplay.xhtml"; // TODO à modifier par bon nom
-            }
-            else {
+            } else {
                 // Message : Mot de passe mauvais
                 // TODO
                 return "userLogin.xhtml";   // TODO à modifier par bon nom
@@ -87,7 +86,7 @@ public class UserControlerBean {
             }
 
             /*while ((!userSubmitted.getLogin().equals(userDao.getUsersLogin().get(i))) || (i == userDao.getUsersLogin().size)) {
-                i++;
+             i++;
              }
              if (userSubmitted.getLogin() != userDao.getUsersLogin().get(i)) {            
              }*/
@@ -97,5 +96,30 @@ public class UserControlerBean {
             //redirect the count creation page
             return "userCountCreation.xhtml";
         }
+    }
+
+    public String disconnectUser() {
+        //récupère l'espace de mémoire de JSF
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+        UserModelBean user = (UserModelBean) sessionMap.get("loggedUser");
+
+        if (user != null) {
+            // Enregistre l'heure de la dernière connexion
+            timeLastConnexion(user);
+            //place l'utilisateur dans l'espace de mémoire de JSF
+            sessionMap.remove("loggedUser", null);
+            //redirect the current page // Pop-up
+            return "userNotConnected.xhtml"; // TODO à modifier par bon nom
+        } 
+        else {
+            // Déconnexion impossible car pas connecté
+            return null;
+        }
+    }
+
+    public void timeLastConnexion(UserModelBean user) {
+
     }
 }
