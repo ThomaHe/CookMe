@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Splashscreen</title>
-         <link rel="stylesheet" href="lib/style.css" />
+         <link rel="stylesheet" href="lib/stylejsp.css" />
     </head>
 
     <body>

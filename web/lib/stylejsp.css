@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+
+html, body{
+	height: 100%;
+}
+.activite{
+	display : inline-block;
+	width: 20%;
+	min-height: 60%;
+	margin: 5%;
+	background-image: url(http://cdn.playbuzz.com/cdn/d491639a-d33f-4402-8b30-cc3ef82b06a5/97253a58-90b7-42aa-bbc3-28f5822315bb.jpg);
+	background-size : 121%;
+	color:blue;
+	text-align: center;
+}
+#emergency{
+	margin-left: 10%;
+}
+.content{
+	text-align : center;
+}
+footer{
+    text-align: justify;
+}
+#logofoo{
+	text-align : right;
+        display:inline-block;
+}
+#logofoo img{
+    max-height : 50px;
+}
+#logo{
+	min-width : 70%;
+}
