@@ -36,11 +36,11 @@ public class RecipeControlerBean {
     }
     
     public void adminDeleteRecipe(RecipeModel recipe){
-        recipeDao.delete(recipe);
+        recipeDao.deleteRecipe(recipe);
     }
     
     public void adminUpdateRecipe(RecipeModel recipe){
-        recipeDao.update(recipe);
+        recipeDao.updateRecipe(recipe);
     }
     
     public void loadAllRecipe(){
