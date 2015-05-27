@@ -44,7 +44,7 @@ public class RecipeControlerBean {
         sessionMap.put("recipeList", recipeList);
     }
     
-    public ArrayList<RecipeModel> RecipeSearch(ArrayList<String> keyword) {
+    public ArrayList<RecipeModel> RecipeSearch(ArrayList<String> keyword) { // Moteur de recherche de recettes
          ArrayList<RecipeModel> list = this.recipeDao.Search(keyword);
          return list;
     }
