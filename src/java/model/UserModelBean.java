@@ -24,6 +24,7 @@ public class UserModelBean implements Serializable {
     private String login;
     private String pwd;
     private String email;
+    private String lastconnection;
 
     public UserModelBean() {
     }
@@ -74,6 +75,14 @@ public class UserModelBean implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLastconnection() {
+        return lastconnection;
+    }
+
+    public void setLastconnection(String lastconnection) {
+        this.lastconnection = lastconnection;
     }
     
     

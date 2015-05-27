@@ -39,7 +39,7 @@ public class UserDao {
 // Création de la requête 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            String query = " insert into user (firstname, lastname, age, login, pwd, email) values (?, ?, ?, ?, ?, ?)";
+            String query = " insert into users (firstname, lastname, age, login, pwd, email) values (?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -70,15 +70,13 @@ public class UserDao {
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT * FROM users where login = '" + login + "'");
 
-
-                user.setAge(rs.getInt("age"));
-                user.setLastname(rs.getString("lastname"));
-                user.setLogin(rs.getString("login"));
-                user.setPwd(rs.getString("pwd"));
-                user.setFirstname(rs.getString("firstname"));
-                user.setEmail(rs.getString("email"));
-                
-
+            user.setAge(rs.getInt("age"));
+            user.setLastname(rs.getString("lastname"));
+            user.setLogin(rs.getString("login"));
+            user.setPwd(rs.getString("pwd"));
+            user.setFirstname(rs.getString("firstname"));
+            user.setEmail(rs.getString("email"));
+            user.setLastconnection(rs.getString("lastconnection"));
 
             rs.close();
             stmt.close();
@@ -110,6 +108,7 @@ public class UserDao {
                 user.setPwd(rs.getString("pwd"));
                 user.setFirstname(rs.getString("firstname"));
                 user.setEmail(rs.getString("email"));
+                user.setLastconnection(rs.getString("lastconnection"));
 
                 userList.add(user);
             }
@@ -146,6 +145,29 @@ public class UserDao {
             e.printStackTrace();
         }
         return loginList;
+    }
+
+    public void setLastConnection(UserModelBean user, String date) {
+        
+
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            String query = " Update users SET lastconnection = ? WHERE login = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, date);
+            preparedStmt.setString(2, user.getLogin());
+
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+            
+            user.setLastconnection(date);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
