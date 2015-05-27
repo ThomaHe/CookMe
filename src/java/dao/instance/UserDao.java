@@ -89,5 +89,30 @@ public class UserDao {
         }
         return userList;
     }
+    
+    public ArrayList<String> getUsersLogin() { //
+        //return value
+        ArrayList<String> loginList = new ArrayList<String>();
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // create connection 
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT login FROM users");
+
+            while (rs.next()) {
+                loginList.add(rs.getString("login"));
+            }
+
+            rs.close();
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return loginList;
+    }
 
 }
