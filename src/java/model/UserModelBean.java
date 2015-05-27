@@ -24,7 +24,7 @@ public class UserModelBean implements Serializable {
     private String login;
     private String pwd;
 
-    UserModelBean() {
+    public UserModelBean() {
     }
 
     public String getLastname() {
