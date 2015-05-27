@@ -39,7 +39,7 @@ public class UserDao {
 // Création de la requête 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            String query = " insert into user (surname, lastname, age, login, pwd) values (?, ?, ?, ?, ?)";
+            String query = " insert into user (firstname, lastname, age, login, pwd, email) values (?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -48,6 +48,7 @@ public class UserDao {
             preparedStmt.setInt(3, user.getAge());
             preparedStmt.setString(4, user.getLogin());
             preparedStmt.setString(5, user.getPwd());
+            preparedStmt.setString(6, user.getEmail());
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -75,6 +76,8 @@ public class UserDao {
                 user.setLogin(rs.getString("login"));
                 user.setPwd(rs.getString("pwd"));
                 user.setFirstname(rs.getString("firstname"));
+                user.setEmail(rs.getString("email"));
+                
 
 
             rs.close();
@@ -106,6 +109,7 @@ public class UserDao {
                 user.setLogin(rs.getString("login"));
                 user.setPwd(rs.getString("pwd"));
                 user.setFirstname(rs.getString("firstname"));
+                user.setEmail(rs.getString("email"));
 
                 userList.add(user);
             }
