@@ -1,16 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>Template de page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+        <link rel="stylesheet" href="lib/style.css" type="text/css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    </h:head>
+
+    <h:body>
+        <div class="container global">
+            <div class="row">
+                <header>
+                    <div class="container">
+                        <div id="activite" class="col-md-2 col-lg-2">
+                            Recettes
+                        </div>
+                        <div id="inscription" class="col-md-2 col-lg-2 col-md-offset-5 col-lg-offset-5 ">
+                            <legend>Inscription</legend>
+                            <a href="">
+                                Nouvel Utilisateur &#160;
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </div>
+                        <div id="connexion" class="col-md-3 col-lg-3">
+                            <h:form>
+                                <fieldset>
+                                    <legend>Connexion</legend>
+                                    <h:outputLabel styleClass="output-label" for="login">Login &#160;</h:outputLabel> &#160;
+                                    <h:inputText styleClass="input-text" id="login" value="#{user.login}" required="true" size="15" maxlength="20"/>
+                                    <br />
+                                    <h:outputLabel styleClass="output-label" for="motdepasse">Mot de passe &#160;</h:outputLabel>&#160;
+                                    <h:inputSecret styleClass="input-text" id="motdepasse" value="#{user.pwd}" required="true" size="15" maxlength="20"/>
+                                    <br />
+                                    <h:commandButton value="Connexion" action="#{user.goToWelcome}" />
+                                    <br />
+                                </fieldset>
+                            </h:form> 
+                        </div>
+                    </div>
+
+                </header>
+            </div>
+            <div class="row" id="cont">
+                <content>
+                    <div class="container">
+
+                        <h:form class='sign col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3'>  
+                            <legend>Inscription</legend>
+                            <fieldset>
+
+                                <h:outputLabel styleClass="inscription-label" value="Nom:" />
+                                <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.lastname}" required="true" >
+                                    <f:validator validatorId="validators.username" />
+                                </h:inputText>
+                                <h:message for="email" style="color:red" />
+                                <br/> 
+
+                                <h:outputLabel styleClass="inscription-label" value="Prénom:" />  
+                                <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.firstname}" required="true" >
+                                    <f:validator validatorId="validators.username" />
+                                </h:inputText>
+                                <br/>  
+
+                                <h:outputLabel styleClass="inscription-label" value="Age:" />
+                                <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.age}" required="true" >
+                                    <f:validateLongRange minimum="1" maximum="100"/>
+                                </h:inputText>
+                                <br/>  
+
+                                <h:outputLabel styleClass="inscription-label" value="Adresse email:" />
+                                <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.email}" required="true" >
+                                    <f:validator validatorId="validators.email" />
+                                </h:inputText>
+                                <br/>
+
+                                <h:outputLabel styleClass="inscription-label" value="Login:" />
+                                <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.login}" required="true" >
+                                    <f:validator validatorId="validators.login" />
+                                </h:inputText>
+                                <br/>
+
+                                <h:outputLabel styleClass="inscription-label" value="Password :" />
+                                <h:inputSecret styleClass="input-text" value="#{user.pwd}" required="true" binding="#{pass}" />
+                                <br/>  
+
+                                <h:outputLabel styleClass="inscription-label" value="Confirmation Password :" />
+                                <h:inputSecret styleClass="input-text " value="#{user.pwd}" required="true" >
+                                    <f:validator validatorId="validators.password" />
+                                    <f:attribute name='pass' value="#{pass}"/>
+                                </h:inputSecret>
+                                <br/>
+
+                                <h:commandButton value="S'enregistrer" action="#{user.checkAndAddUser}" /> 
+
+
+                            </fieldset>  
+                        </h:form>  
+
+                    </div>
+                </content>
+            </div>
+            <div class="row">
+                <footer class="footer">
+                    <div class="container">
+                        <div class="col-md-3 col-lg-3">
+                            Copyright 2015 all rights reserved
+                        </div> 
+                        <div id="logofoo" class="col-lg-1 col-md-1 col-lg-offset-8 col-md-offset-8 ">
+                            <img src="lib/logo.jpg" alt="logo" />
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </h:body>
 </html>

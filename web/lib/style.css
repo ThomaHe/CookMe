@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Thomas
+ */
 @CHARSET "UTF-8";
 
 body, html{
@@ -18,10 +22,11 @@ content{
     
 }
 footer{
-    min-height: 10%;
+    
     border-top: 2px solid black;
     position: absolute;
     bottom: 0;
+    
 
 }
 
@@ -57,7 +62,18 @@ footer{
 .input-text{
     margin-bottom: 2px;
 }
-
+.inscription-label{
+    display: block;
+    width: 200px;
+    float: left; 
+}
+.validation-failed{
+    
+}
+.sign{
+    margin: 20px;
+    padding: 10px;
+}
 #logofoo img{
     max-height: 50px;
 }
