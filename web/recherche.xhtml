@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="titre">
+                <div id="activite" class="col-md-2 col-lg-2 panel panel-default" style="background-color: blue;"> 
+                    Recherche
+                </div>
+            </ui:define>
+            <ui:define name="body"> 
+                <div class="row" id="cont">
+                    <content>
+                        <div class="container">
+                            <div class="row">
+                                <legend class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 search-legend">Que voulez-vous ?</legend>
+                                <h:form>
+                                    <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+
+                                        <div class="row recipe-search">
+                                            <div class="row">
+                                                <div class="col-md-offset-1 col-lg-offset-1 col-md-5 col-lg-5 champ">
+                                                    <h:outputLabel styleClass="search-label" for="duree">
+                                                        <span class="glyphicon glyphicon-time"></span>&#160;&#160;Durée de préparation
+                                                    </h:outputLabel>
+                                                    <br/>                                               
+                                                    <p:inputMask id="duree" value="#{RecipeModel.duration}" mask="9:99" />
+                                                </div>
+
+                                                <div class="col-md-5 col-lg-5 champ">
+                                                    <h:outputLabel styleClass="search-label" for="motdepasse">
+                                                        <span class="glyphicon glyphicon-edit"></span>&#160;&#160;Difficulté
+                                                    </h:outputLabel>
+                                                    <br/>
+                                                    <p:rating value="#{recipe.expertise}" stars="5" styleClass="rating"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="row ">
+                                                <div class="col-md-offset-1 col-lg-offset-1 col-md-5 col-lg-5 champ">
+                                                    <h:outputLabel styleClass="search-label" for="duree">
+                                                        <span class="glyphicon glyphicon-user"></span>&#160;&#160;Nombre de personnes
+                                                    </h:outputLabel>
+                                                    <br/>
+                                                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                                        <h:outputText id="output-nb" value="#{RecipeModel.nbpeople}" />
+                                                        <h:inputHidden id="nb" value="#{RecipeModel.nbpeople}" />
+                                                        <p:slider for="nb" minValue="1" maxValue="10" display="output-nb" style="width: 200px" displayTemplate="{value}" />
+                                                    </h:panelGrid> 
+                                                </div>
+
+                                                <div class="col-md-5 col-lg-5 champ">
+                                                    <h:outputLabel styleClass="search-label" for="type">
+                                                        <span class="glyphicon glyphicon-book"></span>&#160;&#160;Type de recette
+                                                    </h:outputLabel>
+                                                    <br/>
+                                                    <h:selectOneMenu id="type" value="#{RecipeModel.type}">
+                                                        <f:selectItem id="salade" itemLabel="Salade" itemValue="1" />
+                                                        <f:selectItem id="viande" itemLabel="Viande" itemValue="2" />
+                                                        <f:selectItem id="poisson" itemLabel="Poisson" itemValue="3" />
+                                                        <f:selectItem id="dessert" itemLabel="Dessert" itemValue="4" />
+                                                    </h:selectOneMenu>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-6">
+                                                <h:commandButton value="Rechercher" styleClass="btn-lg btn-info btn-block"  action="#{user.goToWelcome}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </content>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

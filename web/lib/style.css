@@ -15,26 +15,26 @@ header{
     border-bottom: 2px solid black;
     padding: 10px;
 }
-content{
-    
-}
-#cont{
-    
-}
+
 footer{
-    
+    height: 50px;
     border-top: 2px solid black;
     position: absolute;
     bottom: 0;
-    
+}
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
 }
 
 
-
 #activite{
-    background-color: blue;
-    color :white;
+   
     text-align : center;
     height : 100px;
     vertical-align: middle;
@@ -68,7 +68,7 @@ footer{
     float: left; 
 }
 .validation-failed{
-    
+
 }
 .sign{
     margin: 20px;
@@ -76,4 +76,27 @@ footer{
 }
 #logofoo img{
     max-height: 50px;
+}
+
+.recipe-search{
+    border-style: solid;
+    border-width: 3px;
+    border-color : blue;
+    margin-bottom: 20px;
+}
+.search-legend{
+    margin-top: 20px;
+}
+.search-label{
+    font-weight: normal;
+}
+.champ{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.7em;
+}
+.rating{
+     width: 96px;
+    margin: 0 auto;
 }

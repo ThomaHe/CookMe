@@ -1,15 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="fr"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>Cook Me</title>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+        <style>
+            .logo{
+                margin-top: 50px;
+                text-align: center;
+            }
+            h1{
+                color : green;
+                margin-bottom : 20px;
+            }
+            .btn{
+                margin-bottom: 25px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="logo panel panel-default col-md-10 col-md-offset-1 ">
+                    <img id="imglogo" src="lib/logo.jpg" />
+                    <h1>Bienvenue</h1>
+                    <a class="btn btn-success btn-lg" href="template.xhtml"> Entrer sur CookMe </a>
+                </div>
+            </div>
+            
+        </div>
+    </body>
 </html>
 

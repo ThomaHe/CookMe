@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="titre">
+                <div id="activite" class="col-md-2 col-lg-2 panel panel-default" style="background-color: green;"> 
+                    Résultats
+                </div>
+            </ui:define>
+
+            <ui:define name="body">
+                
+                <h:form id="form">
+                    <p:dataGrid var="recipe" value="#{dataGridViewBean.recipes}" columns="3"
+                                layout="grid" rows="12" paginator="true" id="recipes"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Recettes
+                        </f:facet>
+                        <p:panel header="#{RecipeModel.title}" style="text-align:center">
+                            <h:panelGrid columns="1" style="width:100%">
+
+                                <h:outputText value="#{RecipeModel.title}" />
+
+                                <p:commandLink update=":form:carDetail"
+                                               oncomplete="PF('carDialog').show()" title="View Detail">
+                                    <h:outputText styleClass="ui-icon ui-icon-search"
+                                                  style="margin:0 auto;" />
+                                    <f:setPropertyActionListener value="#{recipe}"
+                                                                 target="#{dataGridViewBean.selectedRecipe}" />
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+
+                    <p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+                              showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="carDetail" style="text-align:center;">
+                            <p:panelGrid columns="2"
+                                         rendered="#{not empty dataGridViewBean.selectedRecipe}"
+                                         columnClasses="label,value">
+                                <f:facet name="header">
+                                </f:facet>
+
+                                <h:outputText value="Titre :" />
+                                <h:outputText value="#{dataGridViewBean.selectedRecipe.titre}" />
+
+                                <h:outputText value="Resume :" />
+                                <h:outputText value="#{dataGridViewBean.selectedRecipe.resume}" />
+
+                                <h:outputText value="Difficulte :" />
+                                <h:outputText value="#{dataGridViewBean.selectedRecipe.difficulte}" />
+
+
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

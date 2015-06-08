@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>Cook Me</title>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+        <style>
+            html, body{
+                height: 100%;
+            }
+            .activite{
+                text-decoration: none; 
+                text-align: center;
+
+            }
+            footer{
+                height: 50px;
+                border-top: 2px solid black;
+                position: absolute;
+                bottom: 0;
+            }
+            #logofoo img{
+                max-height: 50px;
+            }
+
+            .act{
+                min-height: 500px;
+                margin-top: 50px;
+            }
+            .row{
+                min-height: 500px;
+            }
+
+        </style>
+    </head>
+    <div class="container global">
+        <div class="row">
+            <body>
+                <div class="container act">
+                    <div class="row ">
+                        <div class="col-md-3 col-md-offset-1" style="background-color:orange; min-height: 450px; text-align: center;">
+                            <a class="activite" id="emergency">
+
+                                Emergency
+
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1" style="background-color:CornflowerBlue; min-height: 450px; text-align: center;">
+                            <a class="activite" id="recipe">
+
+                                Recipe
+
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1" style="background-color:green; min-height: 450px; text-align: center;">
+                            <a class="activite" id="shop">
+
+                                Shop
+
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </body>
+        </div>
+        <div class="row">
+            <footer class="footer">
+                <div class="container">
+                    <div class="col-md-3 col-lg-3">
+                        Copyright 2015 all rights reserved
+                    </div> 
+                    <div id="logofoo" class="col-lg-1 col-md-1 col-lg-offset-8 col-md-offset-8 ">
+                        <img src="lib/logo.jpg" alt="logo" />
+                    </div>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+</html>

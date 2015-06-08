@@ -8,7 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <h:head>
-        <title>Template de page</title>
+        <title>Cook Me</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="lib/style.css" type="text/css" media="all"/>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
@@ -21,9 +21,9 @@
             <div class="row">
                 <header>
                     <div class="container">
-                        <div id="activite" class="col-md-2 col-lg-2">
-                            Recettes
-                        </div>
+                        
+                        <ui:insert name="titre"></ui:insert>
+                       
                         <div id="inscription" class="col-md-2 col-lg-2 col-md-offset-5 col-lg-offset-5 ">
                             <legend>Inscription</legend>
                             <a href="">
@@ -53,10 +53,9 @@
             <div class="row" id="cont">
                 <content>
                     <div class="container">
+                        <ui:insert name="body">
 
-
-                            contenu
-
+                        </ui:insert>
                     </div>
                 </content>
             </div>
