@@ -12,8 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="lib/style.css" type="text/css" media="all"/>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+        
     </h:head>
 
     <h:body>
@@ -21,12 +20,16 @@
             <div class="row">
                 <header>
                     <div class="container">
+                        <a id="home" class="col-md-1 col-lg-1 btn btn-default" href="activity.xhtml" > 
+                             <span class="glyphicon glyphicon-home"></span>
+                            Retour
+                        </a>
                         
                         <ui:insert name="titre"></ui:insert>
-                       
-                        <div id="inscription" class="col-md-2 col-lg-2 col-md-offset-5 col-lg-offset-5 ">
+                                               
+                        <div id="inscription" class="col-md-2 col-lg-2 col-md-offset-3 col-lg-offset-3 ">
                             <legend>Inscription</legend>
-                            <a href="">
+                            <a href="inscription.jsf">
                                 Nouvel Utilisateur &#160;
                                 <span class="glyphicon glyphicon-plus"></span>
                             </a>

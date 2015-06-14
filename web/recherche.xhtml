@@ -13,7 +13,7 @@
     <h:body>
         <ui:composition template="./template.xhtml">
             <ui:define name="titre">
-                <div id="activite" class="col-md-2 col-lg-2 panel panel-default" style="background-color: blue;"> 
+                <div id="activite" class="col-md-2 col-lg-2 col-md-offset-1 col-lg-offset-1 panel panel-default" style="background-color: blue;"> 
                     Recherche
                 </div>
             </ui:define>
@@ -46,16 +46,21 @@
                                             </div>
 
                                             <div class="row ">
+
                                                 <div class="col-md-offset-1 col-lg-offset-1 col-md-5 col-lg-5 champ">
-                                                    <h:outputLabel styleClass="search-label" for="duree">
+                                                    <h:outputLabel styleClass="search-label" for="nbpers" >
                                                         <span class="glyphicon glyphicon-user"></span>&#160;&#160;Nombre de personnes
                                                     </h:outputLabel>
                                                     <br/>
-                                                    <h:panelGrid columns="1" style="margin-bottom: 10px">
-                                                        <h:outputText id="output-nb" value="#{RecipeModel.nbpeople}" />
-                                                        <h:inputHidden id="nb" value="#{RecipeModel.nbpeople}" />
-                                                        <p:slider for="nb" minValue="1" maxValue="10" display="output-nb" style="width: 200px" displayTemplate="{value}" />
-                                                    </h:panelGrid> 
+
+                                                    <p:inputText id="nbpers" value="#{RecipeModel.nbpeople}" />
+                                                    <p:slider for="nbpers" />
+
+                                                    <p:dialog showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                                                        <h:panelGrid >
+                                                            <h:outputText value="Number 1: #{RecipeModel.nbpeople}" />
+                                                        </h:panelGrid>
+                                                    </p:dialog>
                                                 </div>
 
                                                 <div class="col-md-5 col-lg-5 champ">
