@@ -33,7 +33,7 @@
                                                         <span class="glyphicon glyphicon-time"></span>&#160;&#160;Durée de préparation
                                                     </h:outputLabel>
                                                     <br/>                                               
-                                                    <p:inputMask id="duree" value="#{RecipeModel.duration}" mask="9:99" />
+                                                    <p:inputMask id="duree" value="#{recipeModel.duration}" mask="9:99" />
                                                 </div>
 
                                                 <div class="col-md-5 col-lg-5 champ">
@@ -41,7 +41,7 @@
                                                         <span class="glyphicon glyphicon-edit"></span>&#160;&#160;Difficulté
                                                     </h:outputLabel>
                                                     <br/>
-                                                    <p:rating value="#{recipe.expertise}" stars="5" styleClass="rating"/>
+                                                    <p:rating value="#{recipeModel.expertise}" stars="5" styleClass="rating"/>
                                                 </div>
                                             </div>
 
@@ -53,12 +53,12 @@
                                                     </h:outputLabel>
                                                     <br/>
 
-                                                    <p:inputText id="nbpers" value="#{RecipeModel.nbpeople}" />
+                                                    <p:inputText id="nbpers" value="#{recipeModel.nbpeople}" />
                                                     <p:slider for="nbpers" />
 
                                                     <p:dialog showEffect="fade" hideEffect="fade" widgetVar="dlg">
                                                         <h:panelGrid >
-                                                            <h:outputText value="Number 1: #{RecipeModel.nbpeople}" />
+                                                            <h:outputText value="Number 1: #{recipeModel.nbpeople}" />
                                                         </h:panelGrid>
                                                     </p:dialog>
                                                 </div>
@@ -68,7 +68,7 @@
                                                         <span class="glyphicon glyphicon-book"></span>&#160;&#160;Type de recette
                                                     </h:outputLabel>
                                                     <br/>
-                                                    <h:selectOneMenu id="type" value="#{RecipeModel.type}">
+                                                    <h:selectOneMenu id="type" value="#{recipeModel.type}">
                                                         <f:selectItem id="salade" itemLabel="Salade" itemValue="1" />
                                                         <f:selectItem id="viande" itemLabel="Viande" itemValue="2" />
                                                         <f:selectItem id="poisson" itemLabel="Poisson" itemValue="3" />
@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-6">
-                                                <h:commandButton value="Rechercher" styleClass="btn-lg btn-info btn-block"  action="#{user.goToWelcome}" />
+                                                <h:commandButton value="Rechercher" styleClass="btn-lg btn-info btn-block"  action="#{userModelBeam.goToWelcome}" />
                                             </div>
                                         </div>
                                     </div>
