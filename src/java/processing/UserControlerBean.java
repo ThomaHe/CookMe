@@ -49,12 +49,12 @@ public class UserControlerBean {
                 //place l'utilisateur dans l'espace de mémoire de JSF
                 sessionMap.put("loggedUser", user);
                 //redirect the current page
-                return "userdisplay.xhtml"; // TODO à modifier par bon nom
+                return "recherche.xhtml"; // TODO à modifier par bon nom
         } else {
             // Message : login inexistant
             // TODO
             //redirect the current page
-            return "userLogin.xhtml";   // TODO à modifier par bon nom
+            return "inscription.xhtml";   // TODO à modifier par bon nom
         }
     }
 
@@ -72,7 +72,7 @@ public class UserControlerBean {
                 // Message : login déjà pris // Pop-up compte non créé
                 // TODO
                 //redirect the count creation page
-                return "userCountCreation.xhtml"; // TODO
+                return "inscription.xhtml"; // TODO
             } else {
                 //UserSubmissionModelBean
                 //ajout de l'utilisateur à la base de données
@@ -83,7 +83,7 @@ public class UserControlerBean {
                 //place l'utilisateur dans l'espace de mémoire de JSF
                 sessionMap.put("loggedUser", userSubmitted);
                 //pop-up compte créé TODO
-                return "userCountCreated.xhtml"; // TODO
+                return "recherche.xhtml"; // TODO
             }
 
             /*while ((!userSubmitted.getLogin().equals(userDao.getUsersLogin().get(i))) || (i == userDao.getUsersLogin().size)) {
@@ -118,7 +118,7 @@ public class UserControlerBean {
             //place l'utilisateur dans l'espace de mémoire de JSF
             sessionMap.remove("loggedUser", null);
             //redirect the current page // Pop-up
-            return "userNotConnected.xhtml"; // TODO à modifier par bon nom
+            return "activite.xhtml"; // TODO à modifier par bon nom
         } 
         else {
             // Déconnexion impossible car pas connecté
