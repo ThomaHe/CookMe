@@ -5,10 +5,16 @@
  */
 package model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 /**
  *
  * @author Sylvain
  */
+
+@ManagedBean 
+@RequestScoped 
 public class RecipeModel {
 
     private String title;

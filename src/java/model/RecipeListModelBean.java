@@ -7,11 +7,16 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Sylvain
  */
+
+@ManagedBean 
+@RequestScoped 
 public class RecipeListModelBean {
 
     private List<RecipeModel> recipeList;
