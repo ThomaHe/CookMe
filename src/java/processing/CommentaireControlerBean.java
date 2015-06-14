@@ -13,7 +13,7 @@ import model.UserModelBean;
  * @author Angèle
  */
 public class CommentaireControlerBean {
-    private CommentaireDao commentaireDao;
+   /* private CommentaireDao commentaireDao;
     public CommentaireControlerBean() {
         this.commentaireDao=DaoFabric.getInstance().createRecipesDao();
     }
@@ -29,5 +29,5 @@ public class CommentaireControlerBean {
     
     public void userDeleteCommentaire (UserModelBean user, String commentaire, int note){
         commentaireDao.deleteCommentaire(user, commentaire, note);
-    }
+    }*/
 }

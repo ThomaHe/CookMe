@@ -17,6 +17,7 @@ public class RecipeModel {
     private int nbpeople;
     private int duration;
     private String type;
+    private String recette;
 
     public RecipeModel() {
     }
@@ -81,4 +82,16 @@ public class RecipeModel {
     public String toString() { //TODO } }
         return "";
     }
+
+    public String getRecette() {
+        return recette;
+    }
+
+    public void setRecette(String recette) {
+        this.recette = recette;
+    }
+
+    
+    
+    
 }
