@@ -20,7 +20,6 @@ import model.RecipeModel;
 public class RecipesDao {
 
     //TODO
-
     private Connection connection;
     private String dB_HOST;
     private String dB_PORT;
@@ -40,7 +39,7 @@ public class RecipesDao {
         // Création de la requête 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            String query = " insert into recette (title, duration, expertise, nbpeople, type, description) values (?, ?, ?, ?, ?, ?)";
+            String query = " insert into recette (title, duration, expertise, nbpeople, type, description, recette) values (?, ?, ?, ?, ?, ?,?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -50,7 +49,7 @@ public class RecipesDao {
             preparedStmt.setInt(4, recipe.getNbpeople());
             preparedStmt.setString(5, recipe.getType());
             preparedStmt.setString(6, recipe.getDescription());
-
+            preparedStmt.setString(7, recipe.getRecette());
             // execute the preparedstatement
             preparedStmt.execute();
             connection.close();
@@ -58,7 +57,7 @@ public class RecipesDao {
             e.printStackTrace();
         }
     }
-    
+
     public void deleteRecipe(RecipeModel recipe) {
         // Création de la requête 
         try {
@@ -76,12 +75,12 @@ public class RecipesDao {
             e.printStackTrace();
         }
     }
-    
+
     public void updateRecipe(RecipeModel recipe) {
         // Création de la requête 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            String query = " update recette set title=?, duration=?, expertise=?, nbpeople=?, type=?, description=?";
+            String query = " update recette set title=?, duration=?, expertise=?, nbpeople=?, type=?, description=?,recette=?";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -91,6 +90,7 @@ public class RecipesDao {
             preparedStmt.setInt(4, recipe.getNbpeople());
             preparedStmt.setString(5, recipe.getType());
             preparedStmt.setString(6, recipe.getDescription());
+            preparedStmt.setString(7, recipe.getRecette());
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -113,14 +113,15 @@ public class RecipesDao {
             rs = stmt.executeQuery("SELECT * FROM recette");
 
             while (rs.next()) {
-                
+
                 RecipeModel recep = new RecipeModel();
                 recep.setDescription(rs.getString("description"));
                 recep.setDuration(rs.getInt("duration"));
                 recep.setExpertise(rs.getInt(rs.getInt("expertise")));
                 recep.setNbpeople(rs.getInt("nbpeople"));
                 recep.setTitle(rs.getString("title"));
-                recep.setType(rs.getString("type"));                
+                recep.setType(rs.getString("type"));
+                recep.setRecette(rs.getString("recette"));
                 RecipeModelList.add(recep);
             }
 
@@ -132,8 +133,75 @@ public class RecipesDao {
         }
         return RecipeModelList;
     }
-    
-    
+
+    public ArrayList<RecipeModel> getAllRecipesByExp() {
+        //return value
+        ArrayList<RecipeModel> RecipeModelList = new ArrayList<RecipeModel>();
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // create connection 
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM recette ORDER BY expertise asc");
+
+            while (rs.next()) {
+
+                RecipeModel recep = new RecipeModel();
+                recep.setDescription(rs.getString("description"));
+                recep.setDuration(rs.getInt("duration"));
+                recep.setExpertise(rs.getInt(rs.getInt("expertise")));
+                recep.setNbpeople(rs.getInt("nbpeople"));
+                recep.setTitle(rs.getString("title"));
+                recep.setType(rs.getString("type"));
+                recep.setRecette(rs.getString("recette"));
+                RecipeModelList.add(recep);
+            }
+
+            rs.close();
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return RecipeModelList;
+    }
+
+    public ArrayList<RecipeModel> getAllRecipesByTime() {
+        //return value
+        ArrayList<RecipeModel> RecipeModelList = new ArrayList<RecipeModel>();
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // create connection 
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM recette ORDER BY duration asc");
+
+            while (rs.next()) {
+
+                RecipeModel recep = new RecipeModel();
+                recep.setDescription(rs.getString("description"));
+                recep.setDuration(rs.getInt("duration"));
+                recep.setExpertise(rs.getInt(rs.getInt("expertise")));
+                recep.setNbpeople(rs.getInt("nbpeople"));
+                recep.setTitle(rs.getString("title"));
+                recep.setType(rs.getString("type"));
+                recep.setRecette(rs.getString("recette"));
+                RecipeModelList.add(recep);
+            }
+
+            rs.close();
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return RecipeModelList;
+    }
+
     public ArrayList<RecipeModel> Search(ArrayList<String> keyword) {
         //return value
         ArrayList<RecipeModel> RecipeModelList = new ArrayList<RecipeModel>();
@@ -144,23 +212,24 @@ public class RecipesDao {
             // create connection 
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             stmt = connection.createStatement();
-            
+
             StringBuilder query = new StringBuilder("SELECT * FROM recette where 1=1 ");
-            for(String key : keyword){
-                query.append(" and description LIKE %" + key +"%");
+            for (String key : keyword) {
+                query.append(" and description LIKE %" + key + "%");
             }
-            
+
             rs = stmt.executeQuery(query.toString());
 
             while (rs.next()) {
-                
+
                 RecipeModel recep = new RecipeModel();
                 recep.setDescription(rs.getString("description"));
                 recep.setDuration(rs.getInt("duration"));
                 recep.setExpertise(rs.getInt(rs.getInt("expertise")));
                 recep.setNbpeople(rs.getInt("nbpeople"));
                 recep.setTitle(rs.getString("title"));
-                recep.setType(rs.getString("type"));                
+                recep.setType(rs.getString("type"));
+                recep.setRecette(rs.getString("recette"));
                 RecipeModelList.add(recep);
             }
 
