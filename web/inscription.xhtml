@@ -28,48 +28,48 @@
                                 <fieldset>
 
                                     <h:outputLabel styleClass="inscription-label" value="Nom:" />
-                                    <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.lastname}" required="true" >
+                                    <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{userSubmissionModelBean.lastname}" required="true" >
                                         <f:validator validatorId="validators.username" />
                                     </h:inputText>
                                     <h:message for="email" style="color:red" />
                                     <br/> 
 
                                     <h:outputLabel styleClass="inscription-label" value="Prénom:" />  
-                                    <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.firstname}" required="true" >
+                                    <h:inputText styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{userSubmissionModelBean.firstname}" required="true" >
                                         <f:validator validatorId="validators.username" />
                                     </h:inputText>
                                     <br/>  
 
                                     <h:outputLabel styleClass="inscription-label" value="Age:" />
-                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.age}" required="true" >
+                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{userSubmissionModelBean.age}" required="true" >
                                         <f:validateLongRange minimum="1" maximum="100"/>
                                     </h:inputText>
                                     <br/>  
 
                                     <h:outputLabel styleClass="inscription-label" value="Adresse email:" />
-                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.email}" required="true" >
+                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{userSubmissionModelBean.email}" required="true" >
                                         <f:validator validatorId="validators.email" />
                                     </h:inputText>
                                     <br/>
 
                                     <h:outputLabel styleClass="inscription-label" value="Login:" />
-                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{user.login}" required="true" >
+                                    <h:inputText  styleClass="input-text #{component.valid?'validation-ok':'validation-failed'}" value="#{userSubmissionModelBean.login}" required="true" >
                                         <f:validator validatorId="validators.login" />
                                     </h:inputText>
                                     <br/>
 
                                     <h:outputLabel styleClass="inscription-label" value="Password :" />
-                                    <h:inputSecret styleClass="input-text" value="#{user.pwd}" required="true" binding="#{pass}" />
+                                    <h:inputSecret styleClass="input-text" value="#{userSubmissionModelBean.pwd}" required="true" binding="#{pass}" />
                                     <br/>  
 
                                     <h:outputLabel styleClass="inscription-label" value="Confirmation Password :" />
-                                    <h:inputSecret styleClass="input-text " value="#{user.pwd}" required="true" >
+                                    <h:inputSecret styleClass="input-text " value="#{userSubmissionModelBean.pwd2}" required="true" >
                                         <f:validator validatorId="validators.password" />
                                         <f:attribute name='pass' value="#{pass}"/>
                                     </h:inputSecret>
                                     <br/>
 
-                                    <h:commandButton value="S'enregistrer" action="#{user.checkAndAddUser}" /> 
+                                    <h:commandButton value="S'enregistrer" action="#{userSubmissionModelBean.checkAndAddUser}" /> 
 
 
                                 </fieldset>  
