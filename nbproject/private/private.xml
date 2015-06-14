@@ -3,16 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/dao/fabric/DaoFabric.java</file>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/processing/CommentaireControlerBean.java</file>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/model/LoginBean.java</file>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/dao/instance/UserDao.java</file>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/model/RecipeModel.java</file>
+            <file>file:/F:/Documents/GitHub/CookMe/src/java/processing/UserControlerBean.java</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/inscription.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/activity.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/recherche.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/src/java/processing/RecipeControlerBean.java</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/lib/style.css</file>
-            <file>file:/F:/Documents/GitHub/CookMe/web/WEB-INF/web.xml</file>
+            <file>file:/F:/Documents/GitHub/CookMe/web/test.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/template.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/index.xhtml</file>
             <file>file:/F:/Documents/GitHub/CookMe/src/java/model/RecipeListModelBean.java</file>
-            <file>file:/F:/Documents/GitHub/CookMe/src/java/model/RecipeModel.java</file>
             <file>file:/F:/Documents/GitHub/CookMe/web/resultats.xhtml</file>
         </group>
     </open-files>
