@@ -1,12 +1,11 @@
-
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 14 Juin 2015 à 15:42
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Dim 14 Juin 2015 à 19:36
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -18,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `j2e`
+-- Base de données: `j2e`
 --
+CREATE DATABASE IF NOT EXISTS `j2e` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `j2e`;
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,17 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `description` varchar(200) NOT NULL,
   `recette` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `recette`
+--
+
+INSERT INTO `recette` (`id`, `title`, `duration`, `expertise`, `nbpeople`, `type`, `description`, `recette`) VALUES
+(1, 'Salade de tomates', 5, 1, 1, 'salade', 'Salade tomate mozarella ', 'Il faut salade\r\ntomates\r\nmozarella\r\nbasilic'),
+(2, 'Pates calabrese', 20, 2, 3, 'pates', 'Pates à la calabrese ', 'Il faut penne\r\ntomates\r\nmozarella\r\nbasilic'),
+(3, 'Fraises', 5, 1, 2, 'dessert', 'Salade de fraises ', 'Il faut fraises\r\nsucre\r\njus de citron'),
+(4, 'Barbecue', 35, 1, 5, 'Viande', 'Barbecue estival ', 'Il faut saucisses\r\nbrochettes\r\nribs');
 
 -- --------------------------------------------------------
 
